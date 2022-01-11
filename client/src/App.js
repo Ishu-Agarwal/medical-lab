@@ -20,9 +20,9 @@ function App() {
   <Router>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
+    {/* <div class="navbar-header">
       <a class="navbar-brand" >MagicPathlab</a>
-    </div>
+    </div> */}
     <ul class="nav navbar-nav">
       <li class="active"><Link to='/Home'>Home</Link></li>
       <li><Link to="/Contact">Contact</Link></li>
