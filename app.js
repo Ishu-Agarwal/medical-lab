@@ -24,9 +24,6 @@ if ( process.env.NODE_ENV == "production"){
 
 
 }
-app.get("/",(req,res)=>{
-  res.send("hello home");
-})
 app.listen(port,()=>{
     console.log(`connection is set up ${port}`);
 })
