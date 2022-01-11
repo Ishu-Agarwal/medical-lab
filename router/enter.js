@@ -45,16 +45,6 @@ router.post('/Login',async (req,res) =>{
     }
     catch (err){ console.log(err);}
 })
-router.get('/',(req,res) =>{
-    // res.send(`hello from home 1`);
-    Patient.findOne()
-        .then((data)=>{
-            console.log(data);
-            res.send(data);
-        })
-        .catch(error=>res.send(error))
-        
-});
 module.exports = router;
 
 
