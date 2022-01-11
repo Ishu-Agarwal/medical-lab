@@ -21,9 +21,9 @@ function App() {
   <Router>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">MagicPathlab</a>
-    </div>
+    {/* <div class="navbar-header">
+      <a class="navbar-brand" >MagicPathlab</a>
+    </div> */}
     <ul class="nav navbar-nav">
       <li class="active"><Link to='/Home'>Home</Link></li>
       <li><Link to="/Contact">Contact</Link></li>
