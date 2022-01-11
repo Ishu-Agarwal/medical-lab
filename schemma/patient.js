@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+const bcrypt = require("bcryptjs");
 const validator = require("validator");
 const patientSchema= new mongoose.Schema({
     uname :
@@ -23,13 +24,20 @@ const patientSchema= new mongoose.Schema({
         type:String,
         required:true
     },
-    phone:
+    number:
     {
         type:Number,
         require:true
     }
    
 })
-
+patientSchema.pre('save' ,async function (next){
+    console.log("hi");
+    if(this.isModified('password'))
+    {
+        this.password = await bcrypt.hash(this.password,12);
+    }
+    next();
+});
 const Patient = new mongoose.model('patient',patientSchema);
 module.exports=Patient;

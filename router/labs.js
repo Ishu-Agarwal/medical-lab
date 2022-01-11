@@ -4,6 +4,7 @@ const router = express.Router();
 require('../db/conn');
 const Lab = require("../schemma/labschema");
 const Book = require("../schemma/bookschema");
+const bcrypt = require("bcryptjs/dist/bcrypt");
 router.post('/LabSignup',async (req,res)=>{
     console.log(req.body);
     const user=new Lab(req.body);
@@ -39,13 +40,23 @@ router.post('/lablogin',async (req,res) =>{
             if(userLogin)
             {
                 //encryptionpart
-                if(userp === userLogin.password)
+                const isMatching = await bcrypt.compare(usep,userLogin.password); 
+                if(!isMatching)
+                {
+                    res.status(400).json({error:"invalid credentials",statusCode :423});
+                }
+                else
                 {
                     res.json({message:"successful login"});
                 }
-                else{
-                    res.status(400).json({message:"invalid credentials"});
-                }
+
+                // if(userp === userLogin.password)
+                // {
+                //     res.json({message:"successful login"});
+                // }
+                // else{
+                //     res.status(400).json({message:"invalid credentials"});
+                // }
             }               
             else
             {

@@ -4,7 +4,7 @@ import'./Appointment.css';
 const History = () => {
      const history=useHistory();
     const [user,setUser] = useState({
-        name:"",dob:"",doj:"",position:"",labname:"",city:"",salary:0,number:0
+        name:"",dob:"",doj:"",position:"",labname:"",city:"",salary:"",number:""
     });
     let name,value;
     const handleInputs=(event)=>{
