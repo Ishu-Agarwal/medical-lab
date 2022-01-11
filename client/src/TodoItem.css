@@ -1,0 +1,15 @@
+table{
+    background-color: #fff;
+    width: 75%;
+    height:75%;
+    font-size: 20px;
+}
+.his{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+table, th, td {
+    border: 1px solid black;
+  }
