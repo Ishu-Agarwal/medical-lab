@@ -10,10 +10,6 @@ app.use(require('./router/book'));
 app.use(require('./router/labs'));
 app.use(require('./router/employee'));
 const port = process.env.PORT || 5000;
-app.get('/',(req,res) =>{
-  res.send(`hello from home`);
-});
-
 if(process.env.NODE_ENV =="production"){
   app.use(express.static("client/build"));
 }
