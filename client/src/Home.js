@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router,Route,Switch,Link} from "react-router-dom";
+import {BrowserRouter as Link} from "react-router-dom";
  const Home = () => {
     // const location = useLocation();
     // useEffect(() => {
@@ -7,6 +7,7 @@ import {BrowserRouter as Router,Route,Switch,Link} from "react-router-dom";
     // }, [location]);
     // const tass=location.state.data||"";
     return (
+      
         <div className='hom'>
                 <ul>
                   <li><Link to ="/Book" ><button>Book Test</button></Link></li>
