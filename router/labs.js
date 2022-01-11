@@ -10,13 +10,13 @@ router.post('/LabSignup',async (req,res)=>{
     const usern = req.body.uname;
     const userc = req.body.city;
     try{
-          const userExist =await User.findOne({ uname : usern,city:userc });
+          const userExist =await Lab.findOne({ uname : usern,city:userc });
        if(userExist)
        {
            return res.status(422).json({error : "already exists"});
         }
          const userregister = await user.save();
-             res.status(500).send(user);
+             res.status(200).send(user);
      }
      catch(err)
      {

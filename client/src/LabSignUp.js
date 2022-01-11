@@ -5,7 +5,7 @@ const LabSignUp = () => {
 
     const history=useHistory();
     const [user,setUser] = useState({
-        uname:"",city:"",address:"",password:"",number:0
+        uname:"",city:"",address:"",password:"",number:""
     });
     let name,value;
     const handleInputs=(event)=>{

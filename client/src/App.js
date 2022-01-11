@@ -11,7 +11,6 @@ import LabSignUp from "./LabSignUp";
 import Collector from "./Collector";
 import Employee from "./Employee";
 import TodoItem from "./TodoItem";
-// import Corona from "./Corona";
 import AddEmployee from "./AddEmployee";
 import EmployeeDetails from "./EmployeeDetails";
 import Todo from "./Todo";
@@ -21,9 +20,9 @@ function App() {
   <Router>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    {/* <div class="navbar-header">
+    <div class="navbar-header">
       <a class="navbar-brand" >MagicPathlab</a>
-    </div> */}
+    </div>
     <ul class="nav navbar-nav">
       <li class="active"><Link to='/Home'>Home</Link></li>
       <li><Link to="/Contact">Contact</Link></li>
@@ -80,14 +79,14 @@ function App() {
         <Employee/>
       </Route>
       <Route exact path ="/AddEmployee">
-                 <AddEmployee/>
-                </Route>
-                <Route exact path ="/EmployeeDetails">
-                  <EmployeeDetails/>
-                  </Route>
-                  <Route exact path ="/Todo">
-                  <Todo/>
-                </Route>
+        <AddEmployee/>
+      </Route>
+      <Route exact path ="/EmployeeDetails">
+        <EmployeeDetails/>
+      </Route>
+      <Route exact path ="/Todo">
+        <Todo/>
+      </Route>
       {/* <Route exact path ="/Corona">
         <Corona/>
       </Route> */}
