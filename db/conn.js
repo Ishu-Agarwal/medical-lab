@@ -23,7 +23,7 @@ const db = process.env.DATABASE;
 // })
 const connectDB = async () => {
 	try {
-		 mongoose.connect(db,
+		await mongoose.connect(db,
       {
                    useNewUrlParser: true,
         useCreateIndex:true,
