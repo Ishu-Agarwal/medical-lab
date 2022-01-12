@@ -13,10 +13,10 @@ router.post('/addemployee',async (req,res)=>{
         const userExist =await Employee.findOne({ name : usern,city:userc ,labname:userl});
        if(userExist)
        {
-           return res.status(400).json({error : "already exists"});
+           return res.status(400).json({message : "already exists"});
         }
          const userregister = await user.save();
-             res.status(200).send(user);
+             res.status(200).send({message : "successfully inserted"});
      }
      catch( err )
      {

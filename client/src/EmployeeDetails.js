@@ -30,7 +30,7 @@ const EmployeeDetails = () => {
          const data = await res.json();
          if(data.status===400 || !data)
         {
-            window.alert("invalid");
+            window.alert(data.message);
             console.log("invalid");
         }
         else{

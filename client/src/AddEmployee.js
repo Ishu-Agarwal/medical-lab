@@ -30,8 +30,8 @@ const History = () => {
          const data = await res.json();
          if(data.status===400 || !data)
         {
-            window.alert("invalid");
-            console.log("invalid");
+            window.alert(data.message);
+            console.log(data.message);
         }
         else{
             window.alert(data.message);

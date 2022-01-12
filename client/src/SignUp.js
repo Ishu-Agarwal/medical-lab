@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom';
 import "./Login.css"
 const SignUp = () => {
-
     const history=useHistory();
     const [user,setUser] = useState({
         uname:"",password:"",number:""
@@ -56,4 +55,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default SignUp;

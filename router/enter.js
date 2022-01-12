@@ -4,7 +4,7 @@ require('../db/conn');
 const Patient = require("../schemma/patient");
 //const Book = require("../schemma/bookschema");
 const bcrypt = require("bcryptjs/dist/bcrypt");
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 router.post('/Signup',async (req,res)=>{
     console.log(req.body);
     const user=new Patient(req.body);

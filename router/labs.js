@@ -40,10 +40,10 @@ router.post('/lablogin',async (req,res) =>{
             if(userLogin)
             {
                 //encryptionpart
-                const isMatching = await bcrypt.compare(usep,userLogin.password); 
+                const isMatching = await bcrypt.compare(userp,userLogin.password); 
                 if(!isMatching)
                 {
-                    res.status(400).json({error:"invalid credentials",statusCode :423});
+                    res.status(400).json({message:"invalid credentials"});
                 }
                 else
                 {
