@@ -28,7 +28,7 @@ router.post('/employeedetails',async(req,res)=>{
     try{
     const fond=req.body;
     console.log(fond);
-    const userdata=await Book.find({name:fond.name,city:fond.city,labname:fond.labname});
+    const userdata=await Employee.find({name:fond.name,city:fond.city,labname:fond.labname});
     console.log(userdata);
     res.status(200).send(userdata);
     }

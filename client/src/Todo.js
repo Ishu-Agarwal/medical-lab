@@ -24,8 +24,9 @@ import "./TodoItem.css"
               <tr>
                 <td>{item.name}</td>
                 <td>{item.position}</td>
-                <td>{item.number}</td>
                 <td>{item.city}</td>
+                <td>{item.number}</td>
+                <td>{item.labname}</td>
               </tr>
             ))}
         </table>
