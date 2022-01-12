@@ -13,15 +13,17 @@ import Employee from "./Employee";
 import TodoItem from "./TodoItem";
 import AddEmployee from "./AddEmployee";
 import EmployeeDetails from "./EmployeeDetails";
+import LabSection from "./LabSection";
+import UserSection from "./UserSection";
 import Todo from "./Todo";
 function App() {
   return (
   <Router>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    {/* <div class="navbar-header">
+    <div class="navbar-header">
       <a class="navbar-brand" >MagicPathlab</a>
-    </div> */}
+    </div>
     <ul class="nav navbar-nav">
       <li class="active"><Link to='/Home'>Home</Link></li>
       <li><Link to="/Contact">Contact</Link></li>
@@ -29,10 +31,8 @@ function App() {
      
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><Link to="/LabSignUp"><span class="glyphicon glyphicon-user"></span> Lab Sign Up</Link></li>
-      <li><Link to="/LabLogin"><span class="glyphicon glyphicon-log-in"></span> Lab Login</Link></li>
-      <li><Link to="/SignUp"><span class="glyphicon glyphicon-user"></span> User Sign Up</Link></li>
-      <li><Link to="/Login"><span class="glyphicon glyphicon-log-in"></span> User Login</Link></li>
+      <li><Link to="/LabSection"><span class="glyphicon glyphicon-log-in"></span> Lab Section</Link></li>
+      <li><Link to="/UserSection"><span class="glyphicon glyphicon-user"></span> User Section</Link></li>
     </ul>
   </div>
 </nav>
@@ -85,6 +85,12 @@ function App() {
       </Route>
       <Route exact path ="/Todo">
         <Todo/>
+      </Route>
+      <Route exact path ="/LabSection">
+        <LabSection/>
+      </Route>
+      <Route exact path ="/UserSection">
+        <UserSection/>
       </Route>
       {/* <Route exact path ="/Corona">
         <Corona/>

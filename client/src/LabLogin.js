@@ -53,7 +53,7 @@ const LabLogin = () => {
     return (
         <div>
             <form method="POST"className='box'>
-                 <h1 className='login'>Login</h1>
+                 <h1 className='login'>Lab Login</h1>
                 <input type="text" placeholder="LabName" name="uname"  value={user.uname} onChange={handleInputs}/>
                 <input type="text" placeholder="City" name="city"  value={user.city} onChange={handleInputs}/>
                 <input type="password" name="password" placeholder="PASSWORD" value={user.password} onChange={handleInputs}/>
