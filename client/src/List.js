@@ -14,11 +14,10 @@ import "./TodoItem.css"
               
         <table>
             <tr>
-               <th> fname</th>
-               <th> lname</th>
-               <th> city</th>
-               <th> doa</th>
-               <th> test</th>
+               <th> Labname</th>
+               <th> City</th>
+               <th> Phone no.</th>
+               <th> Address</th>
             </tr>
             {tass.map((item) => (
               <tr>
