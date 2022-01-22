@@ -16,6 +16,8 @@ import EmployeeDetails from "./EmployeeDetails";
 import LabSection from "./LabSection";
 import UserSection from "./UserSection";
 import Todo from "./Todo";
+import Center from "./Center";
+import List from "./List";
 function App() {
   return (
   <Router>
@@ -91,6 +93,12 @@ function App() {
       </Route>
       <Route exact path ="/UserSection">
         <UserSection/>
+      </Route>
+      <Route exact path ="/Center">
+        <Center/>
+      </Route>
+      <Route exact path ="/List">
+        <List/>
       </Route>
       {/* <Route exact path ="/Corona">
         <Corona/>

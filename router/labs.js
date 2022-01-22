@@ -26,6 +26,7 @@ router.post('/LabSignup',async (req,res)=>{
      //part1
 });
 
+
 router.post('/lablogin',async (req,res) =>{
     try{
             const usern = req.body.uname;
@@ -71,6 +72,20 @@ router.post('/labhome',async(req,res) =>{
     const fond=req.body;
     console.log(fond);
     const userdata=await Book.find({city:fond.city,home:"Yes",dob:{$gte:fond.sdate,$lt:fond.ldate}});
+    console.log(userdata);
+    res.status(200).send(userdata);
+    }
+    catch(err){
+        res.status(400).json({message:"no such data present"});
+        console.log(err);
+    }
+});
+
+router.post('/CenterLab',async(req,res) =>{
+    try{
+    const fond=req.body;
+    console.log(fond);
+    const userdata=await Lab.find({city:fond.city});
     console.log(userdata);
     res.status(200).send(userdata);
     }

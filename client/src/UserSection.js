@@ -12,6 +12,7 @@ import {BrowserRouter as Router,Switch ,Route,Link} from "react-router-dom";
                 <ul>
                   <li><Link to ="/Login" ><button>User Login</button></Link></li>
                   <li><Link to ="/SignUp"><button>User SignUp</button></Link></li>
+                  <li><Link to ="/Center"><button>Lab Center</button></Link></li>
                 </ul>
             </div>
     )

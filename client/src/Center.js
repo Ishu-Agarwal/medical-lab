@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom';
 import "./Login.css"
-const SignUp = () => {
+const Center = () => {
+
     const history=useHistory();
     const [user,setUser] = useState({
-        uname:"",password:"",number:""
+        city:""
     });
     let name,value;
     const handleInputs=(event)=>{
@@ -15,15 +16,15 @@ const SignUp = () => {
     }
     const PostData=async (event)=>{
         event.preventDefault();
-        const {uname,password,number} =user;
-        const res = await fetch("/Signup",{
+        const {city} =user;
+        const res = await fetch("/CenterLab",{
             method : "POST",
             headers :{
                 "content-Type": "application/json"
             },
             body : JSON.stringify(
                 {
-                    uname,password,number
+                    city
                 }
             )
         });
@@ -36,7 +37,12 @@ const SignUp = () => {
         else{
             window.alert(data.message);
             console.log(data);
-            history.push("/Login");
+            history.push(
+                {
+                    pathname: '/List',
+                    state:{data}
+                }
+            );
         }
    }
 
@@ -44,15 +50,12 @@ const SignUp = () => {
         <div>
             
             <form method="POST" className='box' >
-                 <h1>Sign Up</h1>
-                <input type="text" placeholder="User Name"          name="uname"  value={user.uname} onChange={handleInputs}/>
-                <input type="password" placeholder="PASSWORD"       name="password"  value={user.password} onChange={handleInputs}/>
-                {/* <input type="password" placeholder="Renter PASSWORD"name="re-enter"  value={user.fname} onChange={handleInputs}/> */}
-                <input type="number" placeholder="Phone Number"     name="number"  value={user.number} onChange={handleInputs}/>
+                 <h1>Lab Details:</h1>
+                <input type="text" placeholder="City"          name="city"  value={user.city} onChange={handleInputs}/>
                 <input type="submit" placeholder="Submit" onClick={PostData}/>
             </form>
         </div>
     )
 }
 
-export default SignUp;
+export default Center
