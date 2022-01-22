@@ -30,6 +30,10 @@ const bookSchema= new mongoose.Schema({
     city:{
         type:String,
         required:true
+    },
+    labname:{
+        type:String,
+        required:true
     }
 })
 const BookSchema = new mongoose.model('books',bookSchema);

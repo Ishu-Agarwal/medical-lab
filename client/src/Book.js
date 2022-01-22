@@ -4,7 +4,7 @@ import'./book.css';
 const Book = () => {
      const history=useHistory();
     const [user,setUser] = useState({
-        fname:"",lname:"",doa:"",test:"Cardiology",home:"Yes",address:"",city:"Delhi"
+        fname:"",lname:"",doa:"",test:"Cardiology",home:"Yes",address:"",city:"Delhi",labname:""
     });
     let name,value;
     const handleInputs=(event)=>{
@@ -15,7 +15,7 @@ const Book = () => {
     }
     const PostData=async (event)=>{
         event.preventDefault();
-        const {fname,lname,doa,test,home,address,city} =user;
+        const {fname,lname,doa,test,home,address,city,labname} =user;
         const res = await fetch("/Book",{
             method : "POST",
             headers :{
@@ -23,21 +23,15 @@ const Book = () => {
             },
             body : JSON.stringify(
                 {
-                    fname,lname,doa,test,home,address,city
+                    fname,lname,doa,test,home,address,city,labname
                 }
             )
         });
         const data = await res.json();
-        if(data.status===400 || !data)
-        {
-            window.alert("invalid");
-            console.log("invalid");
-        }
-        else{
             window.alert(data.message);
             console.log(data);
             history.push("/Home");
-        }
+        
    }
     return (
         <div class="Card">
@@ -71,6 +65,8 @@ const Book = () => {
                 <br></br>
                 < label for="addres">Address: </label>
                 <input id="address"  type="text" placeholder="Address"name="address"  value={user.address} onChange={handleInputs}/>
+                < label for="labname">Lab Name: </label>
+                <input id="labname"  type="text" placeholder="Labname"name="labname"  value={user.labname} onChange={handleInputs}/>
                 <label for="city">City</label>
                     <select id="" name="city"  value={user.city} onChange={handleInputs}>
                     <option value="Delhi">Delhi</option>

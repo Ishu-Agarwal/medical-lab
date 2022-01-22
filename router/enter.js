@@ -14,10 +14,10 @@ router.post('/Signup',async (req,res)=>{
         const userExist =await Patient.findOne({uname : userr});
                if(userExist)
                {
-                   return res.status(422).json({error : "already exists"});
+                   return res.status(422).json({message : "already exists"});
                 }
          const userregister = await user.save();
-             res.status(200).send(user);
+             res.status(200).json({message : "successful signup"});
      }
      catch(err)
      {
@@ -71,7 +71,7 @@ router.post('/Login',async (req,res) =>{
                 const isMatching = await bcrypt.compare(use1,userLogin.password); 
                 if(!isMatching)
                 {
-                    res.status(400).json({error:"invalid credentihbjgjgjjals",statusCode :423});
+                    res.status(400).json({message:"invalid credentials"});
                 }
                 else
                 {
@@ -80,7 +80,7 @@ router.post('/Login',async (req,res) =>{
             }               
             else
             {
-                res.status(400).json({error:"invalid credentials",statusCode :423});
+                res.status(400).json({meassge:"invalid credentials"});
             }
     }catch (err)
     {

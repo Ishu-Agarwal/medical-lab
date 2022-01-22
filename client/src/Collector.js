@@ -28,13 +28,12 @@ const Collector = () => {
             )
         });
          const data = await res.json();
-         if(data.status===400 || !data)
+         if(data.status===400 || !data.length)
         {
-            window.alert("invalid");
+            window.alert("No record present");
             console.log("invalid");
         }
         else{
-            window.alert(data);
             console.log(data);     
             history.push({
                 pathname: '/TodoItem',

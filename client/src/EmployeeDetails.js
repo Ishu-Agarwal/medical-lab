@@ -28,9 +28,9 @@ const EmployeeDetails = () => {
             )
         });
          const data = await res.json();
-         if(data.status===400 || !data)
-        {
-            window.alert(data.message);
+         if(data.status===400 || !data.length)
+         {
+             window.alert("No record present");
             console.log("invalid");
         }
         else{

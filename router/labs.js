@@ -14,10 +14,10 @@ router.post('/LabSignup',async (req,res)=>{
           const userExist =await Lab.findOne({ uname : usern,city:userc });
        if(userExist)
        {
-           return res.status(422).json({error : "already exists"});
+           return res.status(400).json({message : "already exists"});
         }
          const userregister = await user.save();
-             res.status(200).send(user);
+             res.status(200).json({message : "successfull signup"});
      }
      catch(err)
      {
@@ -44,7 +44,7 @@ router.post('/lablogin',async (req,res) =>{
                 const isMatching = await bcrypt.compare(userp,userLogin.password); 
                 if(!isMatching)
                 {
-                    res.status(400).json({message:"invalid credentials"});
+                    res.status(400).json({message:"invalid password"});
                 }
                 else
                 {
@@ -61,7 +61,7 @@ router.post('/lablogin',async (req,res) =>{
             }               
             else
             {
-                res.status(400).json({message:"invalid username"});
+                res.status(400).json({message:"invalid username or city"});
             }
     }
     catch (err){ console.log(err);}
@@ -71,7 +71,10 @@ router.post('/labhome',async(req,res) =>{
     try{
     const fond=req.body;
     console.log(fond);
-    const userdata=await Book.find({city:fond.city,home:"Yes",dob:{$gte:fond.sdate,$lt:fond.ldate}});
+    const userdata=await Book.find({city:fond.city,home:"Yes",doa:{$gte:fond.sdoa,$lte:fond.ldoa}});
+    if(!userdata){
+        res.status(400).json({message:"no such data present"});
+    }
     console.log(userdata);
     res.status(200).send(userdata);
     }
@@ -86,8 +89,14 @@ router.post('/CenterLab',async(req,res) =>{
     const fond=req.body;
     console.log(fond);
     const userdata=await Lab.find({city:fond.city});
-    console.log(userdata);
-    res.status(200).send(userdata);
+    if(!userdata){
+        res.status(400).json({message:"no such data present"});
+    }
+    else{
+        console.log(userdata);
+        res.status(200).send(userdata);
+    }
+   
     }
     catch(err){
         res.status(400).json({message:"no such data present"});

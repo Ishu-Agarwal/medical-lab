@@ -29,8 +29,14 @@ router.post('/employeedetails',async(req,res)=>{
     const fond=req.body;
     console.log(fond);
     const userdata=await Employee.find({name:fond.name,city:fond.city,labname:fond.labname});
-    console.log(userdata);
-    res.status(200).send(userdata);
+    if(!userdata){
+        res.status(400).json({message:"no such data present"});
+    }
+    else{
+        console.log(userdata);
+        res.status(200).send(userdata);
+    }
+    
     }
     catch(err){
         res.status(400).json({message:"no such data present"});
