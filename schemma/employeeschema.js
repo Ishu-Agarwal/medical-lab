@@ -1,9 +1,10 @@
 const mongoose=require("mongoose");
 const validator = require("validator");
 const employeeSchema= new mongoose.Schema({
-    name :
+    name:
      {
         type:String,
+        Uppercase: true,
         required:true,
         minlength:3
     },
@@ -20,6 +21,7 @@ const employeeSchema= new mongoose.Schema({
     position:
     {
         type:String,
+        Uppercase: true,
         required:true
     },
     labname:
@@ -30,6 +32,7 @@ const employeeSchema= new mongoose.Schema({
     city:
     {
         type:String,
+        Uppercase: true,
         required:true
     },
      salary:
@@ -40,10 +43,10 @@ const employeeSchema= new mongoose.Schema({
     number:
     {
         type:Number,
-        require:true
+        require:true,
+        minlength:10
     }
    
 })
-
 const Employee = new mongoose.model('employee',employeeSchema);
 module.exports=Employee;

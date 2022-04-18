@@ -50,7 +50,16 @@ const Center = () => {
             
             <form method="POST" className='box' >
                  <h1>Lab Details:</h1>
-                <input type="text" placeholder="City"          name="city"  value={user.city} onChange={handleInputs}/>
+                 <label for="city">City</label>
+                    <select id="" name="city"  value={user.city} onChange={handleInputs}>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bombay">Bombay</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Banglore">Banglore</option>
+                    <option value="Kota">Kota</option>
+                </select>
                 <input type="submit" placeholder="Submit" onClick={PostData}/>
             </form>
         </div>

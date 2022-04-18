@@ -22,12 +22,13 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-   color:antiquewhite;;
+   color:white;
+   text-align: center;
 }
 .caaard{
     text-align: center;
 }
-input[type ="text"], input[type ="date"],select,textarea{
+input[type ="text"], input[type ="date"], input[type ="number"],select,textarea{
 
     background: none;
     background-color: ivory;
@@ -65,4 +66,9 @@ input[type ="text"], input[type ="date"],select,textarea{
     }
      input[type ="submit"]:hover{
         background-color: #2ecc71;
+    }
+
+    h3{
+        color: white;
+        font-weight: bolder;
     }

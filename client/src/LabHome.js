@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import './Home.css';
  const LabHome = () => {
     // const location = useLocation();
     // useEffect(() => {
@@ -8,7 +9,7 @@ import {Link} from "react-router-dom";
     // const tass=location.state.city;
     return (
         <div className='hom'>
-                <ul>
+                <ul className='hom'>
                   <li><Link to ="/Collector" ><button>Home SampleCollection</button></Link></li>
                   <li><Link to ="/Employee"><button>Employee Page</button></Link></li>
                 </ul>

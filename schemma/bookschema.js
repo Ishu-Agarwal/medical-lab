@@ -19,6 +19,11 @@ const bookSchema= new mongoose.Schema({
         type:String,
         required:true
     },
+    number:{
+        type:Number,
+        minlength:10,
+        max:99999999999
+    },
     home:{
         type:String,
         required:true

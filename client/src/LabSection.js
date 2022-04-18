@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router,Switch ,Route,Link} from "react-router-dom";
+import './Home.css';
  const LabSection = () => {
     // const location = useLocation();
     // useEffect(() => {
@@ -9,7 +10,7 @@ import {BrowserRouter as Router,Switch ,Route,Link} from "react-router-dom";
     return (
       
         <div className='hom'>
-                <ul>
+                <ul className='hom'>
                   <li><Link to ="/LabLogin" ><button>Lab Login</button></Link></li>
                   <li><Link to ="/LabSignUp"><button>Lab SignUp</button></Link></li>
                 </ul>

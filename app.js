@@ -22,7 +22,7 @@ app.use(require('./router/employee'));
 // 		process.exit(1);
 //   }
 //   );
-const port = process.env.PORT;
+const port = process.env.PORT ||5000;
 if ( process.env.NODE_ENV == "production"){
 
   app.use(express.static("client/build"));

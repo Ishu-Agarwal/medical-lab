@@ -4,7 +4,7 @@ import'./book.css';
 const Book = () => {
      const history=useHistory();
     const [user,setUser] = useState({
-        fname:"",lname:"",doa:"",test:"Cardiology",home:"Yes",address:"",city:"Delhi",labname:""
+        fname:"",lname:"",doa:"",number:"",test:"",home:"",address:"",city:"",labname:""
     });
     let name,value;
     const handleInputs=(event)=>{
@@ -15,7 +15,8 @@ const Book = () => {
     }
     const PostData=async (event)=>{
         event.preventDefault();
-        const {fname,lname,doa,test,home,address,city,labname} =user;
+
+        const {fname,lname,doa,number,test,home,address,city,labname} =user;
         const res = await fetch("/Book",{
             method : "POST",
             headers :{
@@ -23,14 +24,14 @@ const Book = () => {
             },
             body : JSON.stringify(
                 {
-                    fname,lname,doa,test,home,address,city,labname
+                    fname,lname,doa,number,test,home,address,city,labname
                 }
             )
         });
         const data = await res.json();
             window.alert(data.message);
             console.log(data);
-            history.push("/Home");
+            if(data.message=== "Booking Done") history.push("/Home");
         
    }
     return (
@@ -44,36 +45,42 @@ const Book = () => {
                 <input type="text" placeholder="last name"      name="lname"  value={user.lname} onChange={handleInputs}/>
                 <label for="doa">Booking Date:</label>
                 <input type="date" placeholder="Appoinment date"name="doa"  value={user.doa} onChange={handleInputs}/>
-                <br></br>
-                <label for="country">Test</label>
-                <select id="" name="test"  value={user.test} onChange={handleInputs}>
-                  <option value="Cadio">Cardiology</option>
-                  <option value="neuro">Neurology</option>
-                  <option value="Nephro">Nephrology</option>
-                  <option value="Uro">Urology</option>
-                  <option value="Gastro">Gastroenterology</option>
-                  <option value="Dermato">Dermatology</option>
-                  <option value="Opthalmo">Opthalmology</option>
-                  <option value="Gynaeco">Gynaecology</option>
-                  <option value="General Physician">General Physician</option>
+                <label for="phone">Phone Number:</label><br></br>
+                <input type="number" placeholder="XXXXXXXXXX" name="number"  value={user.phone} onChange={handleInputs}/>
+            
+                <label for="test">Test</label>
+                <select type="text" name="test"  value={user.test} onChange={handleInputs}>
+                <option value="" disabled selected>Choose your option</option>
+                  <option value="ACTH">ACTH (Adreno Corticotropic Hormone) Test</option>
+                  <option value="ADT">Adenosine Deaminase Test</option>
+                  <option value="Albumin Test">Albumin Test</option>
+                  <option value="Ammonia Test">Ammonia Test</option>
+                  <option value="Thyroid Test">Thyroid Test</option>
+                  <option value="Urea Test">Urea Test</option>
+                  <option value="Lactic Acid">Plasma Lactate (Lactic Acid) Test</option>
+                  <option value="X-Ray">X-Ray</option>
+                  <option value="Protein Test">Protein Test</option>
                 </select>
                 < label for="sample">Want home sample collection: </label>
                 <select id="" name="home"  value={user.home} onChange={handleInputs}>
-                    <option value="Yes">Yes</option>
                     <option value="No">No</option>
+                    <option value="Yes">Yes</option>
                 </select>
                 <br></br>
                 < label for="addres">Address: </label>
-                <input id="address"  type="text" placeholder="Address"name="address"  value={user.address} onChange={handleInputs}/>
+                <textarea id="address"  autoSize={true} row={3} placeholder="Address"name="address"  value={user.address} onChange={handleInputs} />  
+                {/* <input id="address"  type="textarea" row={3} placeholder="Address"name="address"  value={user.address} onChange={handleInputs}/> */}
                 < label for="labname">Lab Name: </label>
                 <input id="labname"  type="text" placeholder="Labname"name="labname"  value={user.labname} onChange={handleInputs}/>
                 <label for="city">City</label>
                     <select id="" name="city"  value={user.city} onChange={handleInputs}>
+                    <option value="" disabled selected>Choose your option</option>
                     <option value="Delhi">Delhi</option>
                     <option value="Bombay">Bombay</option>
                     <option value="Kolkata">Kolkata</option>
                     <option value="Jaipur">Jaipur</option>
                     <option value="Banglore">Banglore</option>
+                    <option value="Kota">Kota</option>
                 </select>
                 <input type="submit" placeholder="Submit"  onClick={PostData}/>
             </form>

@@ -29,7 +29,7 @@ import "./TodoItem.css"
               </tr>
             ))}
         </table>
-        <Link to="/History" activeClassName="active">
+        <Link to="/Home" activeClassName="active">
           Go_Back
         </Link>
         </div>

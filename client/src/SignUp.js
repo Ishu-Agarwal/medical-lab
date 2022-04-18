@@ -4,7 +4,7 @@ import "./Login.css"
 const SignUp = () => {
     const history=useHistory();
     const [user,setUser] = useState({
-        uname:"",password:"",number:""
+        uname:"",password:"",email:"",number:""
     });
     let name,value;
     const handleInputs=(event)=>{
@@ -15,7 +15,7 @@ const SignUp = () => {
     }
     const PostData=async (event)=>{
         event.preventDefault();
-        const {uname,password,number} =user;
+        const {uname,password,email,number} =user;
         const res = await fetch("/Signup",{
             method : "POST",
             headers :{
@@ -23,20 +23,21 @@ const SignUp = () => {
             },
             body : JSON.stringify(
                 {
-                    uname,password,number
+                    uname,password,email,number
                 }
             )
         });
         const data = await res.json();
-        if(data.status===400 || !data)
+        if(data.status===400 || data.message==="error" || data.message ==="already exists")
         {
-            window.alert("invalid");
+            window.alert(data.message);
             console.log("invalid");
         }
         else{
             window.alert(data.message);
             console.log(data);
-            history.push("/Login");
+            if(data.message==="successful signup")
+                history.push("/Login");
         }
    }
 
@@ -47,7 +48,7 @@ const SignUp = () => {
                  <h1>Sign Up</h1>
                 <input type="text" placeholder="User Name"          name="uname"  value={user.uname} onChange={handleInputs}/>
                 <input type="password" placeholder="PASSWORD"       name="password"  value={user.password} onChange={handleInputs}/>
-                {/* <input type="password" placeholder="Renter PASSWORD"name="re-enter"  value={user.fname} onChange={handleInputs}/> */}
+                <input type="text" placeholder="abc@gmail.com"      name="email"  value={user.email} onChange={handleInputs}/>
                 <input type="number" placeholder="Phone Number"     name="number"  value={user.number} onChange={handleInputs}/>
                 <input type="submit" placeholder="Submit" onClick={PostData}/>
             </form>

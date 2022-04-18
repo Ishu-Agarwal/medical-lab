@@ -9,7 +9,7 @@ code {
   font-family: cursive;
 }
 body {
-  background-color: rgb(3, 44, 10);
+  background-color:aquamarine;
 }
 ul.nav{
   list-style-type: none;
@@ -41,13 +41,13 @@ li.nav1{
   float: right;
 }
 button{
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 20px;
   border-radius: 20px;
   padding: 10px;
   font-weight: bold;
   color:wheat;
-  font-size: 15px;
+  font-size: 22px;
   background-color: rgb(50, 19, 136);
   transition: 0.5s;
 }
@@ -69,3 +69,60 @@ ul.gear{
   list-style-position: inside;
   margin:25px;
 }
+.container-fluid{
+  background-color:blue;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  height:60px;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

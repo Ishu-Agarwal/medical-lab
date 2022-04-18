@@ -8,26 +8,29 @@ const patientSchema= new mongoose.Schema({
         required:true,
         minlength:3
     },
-    // email:
-    // {
-    //     type:String ,
-    //     require:true,
-    //     unique:true,
-    //     validate(value){
-    //         if(!validator.isEmail(value)){
-    //             throw new Error("invalid email");
-    //         }
-    //     }
-    // },
-    password:
+    email:
     {
+        type:String ,
+        require:true,
+        unique:true,
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error("invalid email");
+            }
+        }
+    },
+    password:
+    {         
         type:String,
-        required:true
+        required:true,
+        minlength:7
     },
     number:
     {
         type:Number,
-        require:true
+        require:true,
+        minlength:10
+
     }
    
 })

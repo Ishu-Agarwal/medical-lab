@@ -47,7 +47,15 @@ const LabSignUp = () => {
             <form method="POST" className='box' >
                  <h1>Lab Sign Up</h1>
                 <input type="text" placeholder="Lab_Name"          name="uname"  value={user.uname} onChange={handleInputs}/>
-                <input type="text" placeholder="City"          name="city"  value={user.city} onChange={handleInputs}/>
+                <select id="" name="city"  value={user.city} onChange={handleInputs}>
+                <option value="" disabled selected>Choose City</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bombay">Bombay</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Banglore">Banglore</option>
+                    <option value="Kota">Kota</option>
+                </select>
                 <input type="text" placeholder="Address"          name="address"  value={user.address} onChange={handleInputs}/>
                 <input type="password" placeholder="PASSWORD"       name="password"  value={user.password} onChange={handleInputs}/>
                 {/* <input type="password" placeholder="Renter PASSWORD"name="re-enter"  value={user.fname} onChange={handleInputs}/> */}

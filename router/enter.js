@@ -9,18 +9,23 @@ router.post('/Signup',async (req,res)=>{
     console.log(req.body);
     const user=new Patient(req.body);
     const userr = req.body.uname;
-                const use1 =req.body.password;
+    const use1 =req.body.password;
+
     try{
         const userExist =await Patient.findOne({uname : userr});
-               if(userExist)
+               if(userExist )
                {
-                   return res.status(422).json({message : "already exists"});
+                   return res.status(400).json({message : "already exists"});
+                }
+                if(req.body.number>9999999999){
+                    return res.status(400).json({message : "invalid number"});
                 }
          const userregister = await user.save();
              res.status(200).json({message : "successful signup"});
      }
      catch(err)
      {
+        res.status(400).json({message : "error"});
          console.log(err);
      }
      //part1
@@ -62,11 +67,11 @@ router.post('/Login',async (req,res) =>{
             const use1 =req.body.password;
             if(!userr || !use1)
             {
-                return res.status(400).json({error : "plz fill all details", statusCode: 422})
+                return res.status(400).json({message : "plz fill all details", statusCode: 400})
             }
             const userLogin = await Patient.findOne({uname : userr});
             
-            if(userLogin)
+            if(userLogin)   
             {
                 const isMatching = await bcrypt.compare(use1,userLogin.password); 
                 if(!isMatching)
@@ -84,7 +89,7 @@ router.post('/Login',async (req,res) =>{
             }
     }catch (err)
     {
-        console.log(err);
+        res.status(400).json({meassge:"invalid credentials"});
     }
 });
 module.exports = router;

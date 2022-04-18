@@ -69,19 +69,19 @@ router.post('/lablogin',async (req,res) =>{
 
 router.post('/labhome',async(req,res) =>{
     try{
-    const fond=req.body;
-    console.log(fond);
-    const userdata=await Book.find({city:fond.city,home:"Yes",doa:{$gte:fond.sdoa,$lte:fond.ldoa}});
-    if(!userdata){
-        res.status(400).json({message:"no such data present"});
-    }
-    console.log(userdata);
-    res.status(200).send(userdata);
-    }
-    catch(err){
-        res.status(400).json({message:"no such data present"});
-        console.log(err);
-    }
+        const fond=req.body;
+        console.log(fond);
+        const userdata=await Book.find({city:fond.city,labname:fond.labname,test:fond.test,home:"Yes",doa:{$gt:fond.sdoa,$lt:fond.ldoa}});
+        if(!userdata){
+            res.status(400).json({message:"no such data present"});
+        }
+        console.log(userdata);
+        res.status(200).send(userdata);
+        }
+        catch(err){
+            res.status(400).json({message:"no such data present"});
+            console.log(err);
+        }
 });
 
 router.post('/CenterLab',async(req,res) =>{

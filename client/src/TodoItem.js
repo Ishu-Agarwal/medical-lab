@@ -14,25 +14,29 @@ import "./TodoItem.css"
               
         <table>
             <tr>
+              <th> Id</th>
                <th> fname</th>
                <th> lname</th>
                <th> city</th>
+               <th> Lab name</th>
                <th> doa</th>
                <th> test</th>
             </tr>
             {tass.map((item) => (
               <tr>
+                <td>{item._id}</td>
                 <td>{item.fname}</td>
                 <td>{item.lname}</td>
+                <td>{item.labname}</td>
                 <td>{item.city}</td>
                 <td>{new Date(item.doa).toDateString()} </td>
                 <td>{item.test}</td>
               </tr>
             ))}
         </table>
-        <Link to="/History" activeClassName="active">
+        {/* <Link to = {location.pathname} activeClassName="active">
           Go_Back
-        </Link>
+        </Link> */}
         </div>
     )
 }

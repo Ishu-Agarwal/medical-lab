@@ -3,6 +3,7 @@ import Contact from "./Contact";
 import Book from "./Book";
 import History from "./History";
 import Home from "./Home"
+import Main from "./Main"
 import Login from "./Login";
 import SignUp from "./SignUp";
 import LabHome from "./LabHome"
@@ -18,23 +19,34 @@ import UserSection from "./UserSection";
 import Todo from "./Todo";
 import Center from "./Center";
 import List from "./List";
+import { createContext, useState } from "react";
+
+//const LoginContext = createContext();
+
 function App() {
+  //const [isLogin, setIsLogin] = useState(false);
   return (
+  
+  
+  
   <Router>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" >MagicPathlab</a>
+   {/* <LoginContext.Provider value={[isLogin, setIsLogin]}> */}
+<nav class="navbar navbar-inverse"  >
+  <div class="container-fluid"       >
+    <div class="navbar-header" >
+      <a class="navbar-brand active" >MagicPathlab</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><Link to='/Home'>Home</Link></li>
+      <li ><Link to='/Main'>Home</Link></li>
       <li><Link to="/Contact">Contact</Link></li>
       {/* <li><Link to="/Corona">Corona-Tracker</Link></li> */}
      
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><Link to="/LabSection"><span class="glyphicon glyphicon-log-in"></span> Lab Section</Link></li>
-      <li><Link to="/UserSection"><span class="glyphicon glyphicon-user"></span> User Section</Link></li>
+     <li><Link to="/LabSection"><span class="glyphicon glyphicon-log-in"></span> Lab Section</Link></li>
+       <li ><Link to="/UserSection"><span class="glyphicon glyphicon-user"></span> User Section</Link></li>
+      {/* {isLogin ? <li><Link to="/LabSection"><span class="glyphicon glyphicon-log-in"></span> Lab Section</Link></li>: <></>}
+      {isLogin ? <li onClick={() => setIsLogin(false)}><Link to="/UserSection"><span class="glyphicon glyphicon-user"></span> Logout</Link></li>: <></>} */}
     </ul>
   </div>
 </nav>
@@ -42,6 +54,9 @@ function App() {
     <Switch>
       <Route exact path ="/index">
         <index/>
+      </Route>
+      <Route exact path ="/Main">
+        <Main/>
       </Route>
       <Route exact path ="/Home">
         <Home/>
@@ -104,7 +119,10 @@ function App() {
         <Corona/>
       </Route> */}
       </Switch>
+      {/* </LoginContext.Provider> */}
   </Router>
+  
   );
 }
 export default App;
+{/* export {LoginContext}; */}

@@ -43,12 +43,20 @@ const EmployeeDetails = () => {
     }
     return (
         <div class="caard">
-             <form method="POST" >
-            <h3>Fill the Detail to Search:</h3><br></br>
+             <form method="POST" class="box" style={{'color':'white'}}>
+            <h3 >Fill the Detail to Search:</h3><br></br>
             <label for="lname">Name:</label>
-            <input type="text" placeholder="name"      name="name"  value={user.name} onChange={handleInputs}/>
-            <label for="fname">City:</label>
-            <input type="text" placeholder="City"     name="city"  value={user.city} onChange={handleInputs}/>
+            <input type="text" placeholder="Name"      name="name"  value={user.name} onChange={handleInputs}/>
+            <label for="city">City:</label>
+            <select id="" name="city"  value={user.city} onChange={handleInputs}>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bombay">Bombay</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Banglore">Banglore</option>
+                    <option value="Kota">Kota</option>
+                </select>
             <label for="fname">Lab Name:</label>
             <input type="text" placeholder="Lab Name"     name="labname"  value={user.labname} onChange={handleInputs}/>
             <input type="submit" placeholder="Submit"  onClick={PostData}/>

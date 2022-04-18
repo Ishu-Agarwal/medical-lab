@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import'./Appointment.css';
+import './book.css';
 const History = () => {
      const history=useHistory();
     const [user,setUser] = useState({
@@ -36,16 +36,15 @@ const History = () => {
         else{
             window.alert(data.message);
             console.log(data);     
-            history.push({
-                pathname: '/Employee'
-            });
+            history.push("/Employee");
         } 
     }
     return (
-        <div class="caard">
-             <form method="POST" >
-            <h3>Fill the Detail to Search:</h3><br></br>
-            <label for="fname">Name:</label>
+        <div class="Card">
+                <div className='container1'>
+             <form method="POST" class="caaard">
+            <h2>Fill the Detail to Search:</h2>
+            <label for="fname">Full Name:</label>
             <input type="text" placeholder="Name"     name="name"  value={user.name} onChange={handleInputs}/>
             <label for="sdate">DOB:</label>
                 <input type="date" placeholder="date_of_birth"name="dob"  value={user.dob} onChange={handleInputs}/>
@@ -54,13 +53,14 @@ const History = () => {
                 <input type="date" name="doj"  value={user.doj} onChange={handleInputs}/>
                 <br></br>
 
-            <label for="position">Last Name:</label>
+            <label for="position">Position:</label>
             <input type="text" placeholder="Position"      name="position"  value={user.position} onChange={handleInputs}/>
             <label for="labname">Lab Name:</label>
             <input type="text" placeholder="Lab Name"      name="labname"  value={user.labname} onChange={handleInputs}/>
             
-              <label for="city">City</label>
+            <label for="city">City</label>
                     <select id="" name="city"  value={user.city} onChange={handleInputs}>
+                    <option value="" disabled selected>Choose your option</option>
                     <option value="Delhi">Delhi</option>
                     <option value="Bombay">Bombay</option>
                     <option value="Kolkata">Kolkata</option>
@@ -71,9 +71,10 @@ const History = () => {
             <label for="salary">Salary:</label>
             <input type="text" placeholder="salary"      name="salary"  value={user.salary} onChange={handleInputs}/>
             <label for="salary">Contact_Number:</label>
-            <input type="text"       name="number"  value={user.number} onChange={handleInputs}/>
+            <input type="text"    placeholder="XXXXXXXXXX"   name="number"  value={user.number} onChange={handleInputs}/>
             <input type="submit" placeholder="Submit"  onClick={PostData}/>
              </form>
+        </div>
         </div>
     );
 }

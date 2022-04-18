@@ -1,7 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import { useHistory } from 'react-router-dom';
 import "./Login.css"
+//import { LoginContext } from './App';
 const Login = () => {
+   // const [isLogin, setIsLogin] =  (LoginContext);
     const history=useHistory();
     const [user,setUser] = useState({
         uname:"",password:""
@@ -28,20 +30,25 @@ const Login = () => {
             )
         });
         const data = await res.json();
-        if(data.status=== 400|| !data)
+        if(data.status=== 400|| data.message==="invalid credentials" || data.message==="plz fill all details" || data.message==="undefined")
         {
-            window.alert("invalid");
+            window.alert(data.message);
             console.log("invalid");
         }
         else{
             window.alert(data.message);
             console.log(data);
-            history.push(
-                {
-                    pathname: '/Home',
-                    state:{uname}
-                }
-            );
+            if(data.message==="successful login"){
+             //   setIsLogin(true);
+                history.push(
+                    {
+                        pathname: '/Home',
+                        state:{uname}
+                    }
+                    );
+            }
+
+            
         }
    }
 
@@ -49,7 +56,7 @@ const Login = () => {
         <div>
             <form method="POST"className='box'>
                  <h1 className='login'>Login</h1>
-                <input type="text" placeholder="User Name" name="uname"  value={user.name} onChange={handleInputs}/>
+                <input type="text" placeholder="USER NAME" name="uname"  value={user.name} onChange={handleInputs}/>
                 <input type="password" name="password" placeholder="PASSWORD" value={user.password} onChange={handleInputs}/>
                 <input type="submit" value="Login"  onClick={PostData}/>
             </form>
