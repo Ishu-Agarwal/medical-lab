@@ -71,10 +71,8 @@ ul.gear{
 }
 .container-fluid{
   background-color:blue;
-  overflow: hidden;
   position: fixed;
   top: 0;
-  height:60px;
   width: 100%;
 }
 

@@ -26,18 +26,15 @@ import { createContext, useState } from "react";
 function App() {
   //const [isLogin, setIsLogin] = useState(false);
   return (
-  
-  
-  
   <Router>
    {/* <LoginContext.Provider value={[isLogin, setIsLogin]}> */}
-<nav class="navbar navbar-inverse"  >
-  <div class="container-fluid"       >
-    <div class="navbar-header" >
-      <a class="navbar-brand active" >MagicPathlab</a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" >MagicPathlab</a>
     </div>
     <ul class="nav navbar-nav">
-      <li ><Link to='/Main'>Home</Link></li>
+      <li class="active"><Link to='/Main'>Home</Link></li>
       <li><Link to="/Contact">Contact</Link></li>
       {/* <li><Link to="/Corona">Corona-Tracker</Link></li> */}
      
