@@ -34,7 +34,7 @@ function App() {
       <a class="navbar-brand" >MagicPathlab</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><Link to='/Main'>Home</Link></li>
+      <li><Link to='/Main'>Home</Link></li>
       <li><Link to="/Contact">Contact</Link></li>
       {/* <li><Link to="/Corona">Corona-Tracker</Link></li> */}
      
