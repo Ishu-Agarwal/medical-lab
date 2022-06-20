@@ -49,6 +49,9 @@ function App() {
 </nav>
 
     <Switch>
+    <Route exact path ="/">
+        <Main/>
+      </Route>
       <Route exact path ="/index">
         <index/>
       </Route>
