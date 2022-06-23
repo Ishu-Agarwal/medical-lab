@@ -51,5 +51,5 @@ router.post('/history',async(req,res)=>{
 module.exports = router;
 //git status
 //git add .
-//git commit -am "delketed two file"
+//git commit -am "two file"
 //git push heroku master:main
