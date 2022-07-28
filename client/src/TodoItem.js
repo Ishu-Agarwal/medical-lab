@@ -1,14 +1,23 @@
-import React,{useEffect} from 'react';
-import { Link,useLocation } from "react-router-dom";
+import React,{useEffect,useContext} from 'react';
+import { Link,useLocation,useHistory} from "react-router-dom";
+import { LabLoginContext , LoginContext} from './App';
 import "./TodoItem.css"
  const TodoItem = (props) => {
     const location = useLocation();
+    const addr=location.pathname;
+
+    const history=useHistory();
+    const [isLabLogin, setIsLabLogin] =  useContext(LabLoginContext);
+    const [isLogin, setIsLogin] =  useContext(LoginContext);
+
     useEffect(() => {
        console.log(location.pathname);
        console.log(location.state.data);
     }, [location]);
     const tass=location.state.data;
-
+    const uname=tass[0].uname;
+    const uname1=tass[0].labname;
+    const ccity=tass[0].city;
     return (
         <div className='his'>
               
@@ -34,9 +43,10 @@ import "./TodoItem.css"
               </tr>
             ))}
         </table>
-        {/* <Link to = {location.pathname} activeClassName="active">
-          Go_Back
-        </Link> */}
+        {
+          isLogin ? <Link to ={{ pathname: "/History", state: { uname} }}activeClassName="active">Go_Back</Link>
+          : <Link to={{ pathname: "/LabHome", state: { uname:uname1,city:ccity} }} activeClassName="active">Go_Back</Link>
+        }
         </div>
     )
 }

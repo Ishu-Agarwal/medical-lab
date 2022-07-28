@@ -1,10 +1,23 @@
-import React,{useState} from 'react';
-import { useHistory } from 'react-router-dom';
-import "./Login.css"
+import React,{useState,useEffect } from 'react';
+import { Link,useLocation ,useHistory } from "react-router-dom";
+import {useContext} from 'react';
+import { LabLoginContext , LoginContext} from './App';
+import "./book.css"
 const Collector = () => {
-     const history=useHistory();
+    const location = useLocation();
+    const [isLabLogin, setIsLabLogin] =  useContext(LabLoginContext);
+    useEffect(() => {
+      if(!isLabLogin) history.push({pathname: "/Main"});
+    }, []);
+    useEffect(() => {
+       console.log(location.pathname);
+       
+       console.log(location.state.uname);
+    }, [location]);
+    const history=useHistory();
+
     const [user,setUser] = useState({
-       labname:"", city:"",test:"",sdoa:"",ldoa:""
+       labname:location.state.uname , city:location.state.city,test:"",sdoa:"",ldoa:""
     });
     let name,value;
     const handleInputs=(event)=>{
@@ -42,22 +55,14 @@ const Collector = () => {
         } 
     }
     return (
-        <div>
-             <form method="POST" className='box'>
+        <div class="caard">
+             <form method="POST" className='container1'>
             <h3 className='login'>Fill the Detail to Search:</h3>
             <br></br>
             <label for="labname">Lab Name:</label>
-                <input type="text" placeholder="Lab name"name="labname"  value={user.labname} onChange={handleInputs}/>
-            <label for="city">City</label>
-                    <select id="" name="city"  value={user.city} onChange={handleInputs}>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Bombay">Bombay</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Jaipur">Jaipur</option>
-                    <option value="Banglore">Banglore</option>
-                    <option value="Kota">Kota</option>
-                </select>
+                <input type="text" name="labname"  value={user.labname} disabled="true"/>
+            <label for="city">City:</label>
+                <input type="text" name="city"  value={user.city} disabled="true"/>
             <label for="test">Test</label>
                 <select id="" name="test"  value={user.test} onChange={handleInputs}>
                     <option value="" disabled selected>Choose your option</option>

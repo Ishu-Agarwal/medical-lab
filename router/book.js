@@ -10,7 +10,7 @@ router.post('/Book',async (req,res)=>{
         req.body.lname=req.body.lname.toUpperCase();
         console.log(req.body);
         const user=new Book(req.body);
-        const userExist =await Lab.findOne({uname : user.labname,city:user.city});
+        const userExist =await Lab.findOne({labname : user.labname,city:user.city});
         if(userExist)
         {
             const userregister = await user.save();
@@ -31,7 +31,7 @@ router.post('/history',async(req,res)=>{
         req.body.lname=req.body.lname.toUpperCase();
         const fond=req.body;
         console.log(fond);
-        const userdata=await Book.find({fname:fond.fname,lname:fond.lname,phone:fond.number,doa:{$gte:fond.sdoa,$lte:fond.ldoa}});
+        const userdata=await Book.find({uname:fond.uname,fname:fond.fname,lname:fond.lname,phone:fond.number,doa:{$gte:fond.sdoa,$lte:fond.ldoa}});
         if(!userdata)
         {
             res.status(400).json({message:"no such data present"});
@@ -48,6 +48,7 @@ router.post('/history',async(req,res)=>{
     }
     //
 })
+
 module.exports = router;
 //git status
 //git add .

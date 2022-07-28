@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useHistory } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import "./Login.css"
 const LabSignUp = () => {
 
@@ -62,7 +62,9 @@ const LabSignUp = () => {
                 <input type="number" placeholder="Contact Number"     name="number"  value={user.number} onChange={handleInputs}/>
         
                 <input type="submit" placeholder="Submit" onClick={PostData}/>
+                <span><Link to ="/LabLogin" ><button>Lab Login</button></Link></span>
             </form>
+            
         </div>
     )
 }

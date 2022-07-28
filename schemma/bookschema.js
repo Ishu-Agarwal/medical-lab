@@ -1,12 +1,11 @@
 const mongoose=require("mongoose");
 const validator = require("validator");
 const bookSchema= new mongoose.Schema({
-    fname :{
+    uname :{
         type:String,
-        required:true,
-        minlength:3
+        required:true
     },
-    lname :{
+    fname :{
         type:String,
         required:true,
         minlength:3

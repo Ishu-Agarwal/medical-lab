@@ -1,11 +1,35 @@
-import React,{useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import React,{useState,useEffect } from 'react';
+import { Link,useLocation ,useHistory } from "react-router-dom";
+import {useContext} from 'react';
+import { LabLoginContext , LoginContext} from './App';
 import'./book.css';
-const Book = () => {
-     const history=useHistory();
-    const [user,setUser] = useState({
-        fname:"",lname:"",doa:"",number:"",test:"",home:"",address:"",city:"",labname:""
-    });
+const Book = (props) => {
+    const location = useLocation();
+    const [isLogin, setIsLogin] =  useContext(LoginContext);
+    useEffect(() => {
+      if(!isLogin) history.push({pathname: "/Main"});
+    }, []);
+
+    useEffect(() => {
+       console.log(location.pathname);
+       
+       console.log(location.state.uname);
+    }, [location]);
+    const history=useHistory();
+    const [user,setUser] = useState(
+        {
+            uname:location.state.uname,
+            fname:"",
+            lname:"",
+            doa:"",
+            number:"",
+            test:"",
+            home:"",
+            address:"",
+            city:"",
+            labname:""
+        }
+    );
     let name,value;
     const handleInputs=(event)=>{
         console.log(event);
@@ -16,22 +40,24 @@ const Book = () => {
     const PostData=async (event)=>{
         event.preventDefault();
 
-        const {fname,lname,doa,number,test,home,address,city,labname} =user;
+        const {uname, fname,lname,doa,number,test,home,address,city,labname} =user;
         const res = await fetch("/Book",{
             method : "POST",
-            headers :{
-                "content-Type": "application/json"
-            },
-            body : JSON.stringify(
-                {
-                    fname,lname,doa,number,test,home,address,city,labname
-                }
-            )
+            headers :{"content-Type": "application/json"},
+            body : JSON.stringify({uname,fname,lname,doa,number,test,home,address,city,labname})
         });
         const data = await res.json();
             window.alert(data.message);
             console.log(data);
-            if(data.message=== "Booking Done") history.push("/Home");
+            if(data.message=== "Booking Done") {
+                history.push(
+                    {
+                        pathname: '/Home',
+                        state:{uname}
+                    }
+                    );
+
+            }
         
    }
     return (
@@ -39,6 +65,8 @@ const Book = () => {
                <div className='container1'>
             <form method="POST" className='caaard'>
                 <h2>Fill the form:</h2>
+                <label for="uname">Account User:</label>
+                <input type="text"  name="uname"  value={user.uname} disabled="true"/>
             <label for="fname">First Name:</label>
                 <input type="text" placeholder="first name"     name="fname"  value={user.fname} onChange={handleInputs}/>
                 <label for="lname">last Name:</label>

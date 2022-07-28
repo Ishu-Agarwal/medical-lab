@@ -8,6 +8,8 @@ import "./TodoItem.css"
        console.log(location.state.data);
     }, [location]);
     const tass=location.state.data;
+    const uname=tass[0].labname;
+    const ccity=tass[0].city;
 
     return (
         <div className='his'>
@@ -30,7 +32,7 @@ import "./TodoItem.css"
               </tr>
             ))}
         </table>
-        <Link to="/Employee" activeClassName="active">
+        <Link to={{ pathname: "/Employee", state: { uname:uname,city:ccity} }} activeClassName="active">
           Go_Back
         </Link>
         </div>

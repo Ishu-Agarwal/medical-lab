@@ -1,14 +1,17 @@
-import React,{useState, useContext} from 'react'
-import { useHistory } from 'react-router-dom';
+import React,{useState, useContext, useEffect} from 'react'
+import { Link,useHistory } from 'react-router-dom';
 import "./Login.css"
-//import { LoginContext } from './App';
+import { LoginContext } from './App';
 const Login = () => {
-   // const [isLogin, setIsLogin] =  (LoginContext);
+    const [isLogin, setIsLogin] =  useContext(LoginContext);
     const history=useHistory();
     const [user,setUser] = useState({
         uname:"",password:""
     });
     let name,value;
+    useEffect(()=>{
+        setIsLogin(false);
+    },[])
     const handleInputs=(event)=>{
         console.log(event);
         name=event.target.name;
@@ -39,7 +42,7 @@ const Login = () => {
             window.alert(data.message);
             console.log(data);
             if(data.message==="successful login"){
-             //   setIsLogin(true);
+                setIsLogin(true);
                 history.push(
                     {
                         pathname: '/Home',
@@ -59,6 +62,7 @@ const Login = () => {
                 <input type="text" placeholder="USER NAME" name="uname"  value={user.name} onChange={handleInputs}/>
                 <input type="password" name="password" placeholder="PASSWORD" value={user.password} onChange={handleInputs}/>
                 <input type="submit" value="Login"  onClick={PostData}/>
+                <Link to ="/SignUp"><button>User SignUp</button></Link>
             </form>
         </div>
     )

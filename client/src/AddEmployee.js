@@ -1,10 +1,18 @@
-import React,{useState} from 'react';
-import { useHistory } from 'react-router-dom';
-import './book.css';
+
+import React,{useEffect , useContext, useState} from 'react';
+import { Link,useLocation,useHistory } from "react-router-dom";
+import { LabLoginContext , LoginContext} from './App';
+import "./book.css"
 const History = () => {
-     const history=useHistory();
+    const location = useLocation();
+    const [isLabLogin, setIsLabLogin] =  useContext(LabLoginContext);
+    useEffect(() => {
+      if(!isLabLogin) history.push({pathname: "/Main"});
+    }, []);
+    const history=useHistory();
+
     const [user,setUser] = useState({
-        name:"",dob:"",doj:"",position:"",labname:"",city:"",salary:"",number:""
+        name:"",dob:"",doj:"",position:"",labname:location.state.uname ,city:location.state.city,salary:"",number:""
     });
     let name,value;
     const handleInputs=(event)=>{
@@ -36,7 +44,10 @@ const History = () => {
         else{
             window.alert(data.message);
             console.log(data);     
-            history.push("/Employee");
+            history.push({
+                pathname: "/Employee",
+                state: { uname:location.state.uname,city:location.state.city}
+            });
         } 
     }
     return (
@@ -56,18 +67,10 @@ const History = () => {
             <label for="position">Position:</label>
             <input type="text" placeholder="Position"      name="position"  value={user.position} onChange={handleInputs}/>
             <label for="labname">Lab Name:</label>
-            <input type="text" placeholder="Lab Name"      name="labname"  value={user.labname} onChange={handleInputs}/>
+            <input type="text" placeholder="Lab Name"      name="labname"  value={user.labname} disabled="true"/>
             
-            <label for="city">City</label>
-                    <select id="" name="city"  value={user.city} onChange={handleInputs}>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Bombay">Bombay</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Jaipur">Jaipur</option>
-                    <option value="Banglore">Banglore</option>
-                    <option value="Kota">Kota</option>
-                </select>
+            <label for="city">City:</label>
+                <input type="text" name="city"  value={user.city} disabled="true"/>
             <label for="salary">Salary:</label>
             <input type="text" placeholder="salary"      name="salary"  value={user.salary} onChange={handleInputs}/>
             <label for="salary">Contact_Number:</label>

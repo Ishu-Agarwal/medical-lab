@@ -1,10 +1,24 @@
-import React,{useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import React,{useState,useEffect } from 'react';
+import { Link,useLocation ,useHistory } from "react-router-dom";
 import'./Appointment.css';
+import {useContext} from 'react';
+import { LabLoginContext , LoginContext} from './App';
 const EmployeeDetails = () => {
-     const history=useHistory();
+    const location = useLocation();
+    const history=useHistory();
+    const [isLabLogin, setIsLabLogin] =  useContext(LabLoginContext);
+    useEffect(() => {
+      if(!isLabLogin) history.push({pathname: "/Main"});
+    }, []);
+    useEffect(() => {
+       console.log(location.pathname);
+       
+       console.log(location.state.uname);
+    }, [location]);
+
+
     const [user,setUser] = useState({
-        name:"",city:"",labname:""
+        name:"",labname:location.state.uname ,city:location.state.city
     });
     let name,value;
     const handleInputs=(event)=>{
@@ -48,7 +62,7 @@ const EmployeeDetails = () => {
             <label for="lname">Name:</label>
             <input type="text" placeholder="Name"      name="name"  value={user.name} onChange={handleInputs}/>
             <label for="city">City:</label>
-            <select id="" name="city"  value={user.city} onChange={handleInputs}>
+            <select id="" name="city"  value={user.city} onChange={handleInputs}  disabled="true">
                     <option value="" disabled selected>Choose your option</option>
                     <option value="Delhi">Delhi</option>
                     <option value="Bombay">Bombay</option>
@@ -58,7 +72,7 @@ const EmployeeDetails = () => {
                     <option value="Kota">Kota</option>
                 </select>
             <label for="fname">Lab Name:</label>
-            <input type="text" placeholder="Lab Name"     name="labname"  value={user.labname} onChange={handleInputs}/>
+            <input type="text" placeholder="Lab Name"  disabled="true"   name="labname"  value={user.labname} />
             <input type="submit" placeholder="Submit"  onClick={PostData}/>
              </form>
         </div>

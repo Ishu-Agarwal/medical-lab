@@ -1,8 +1,14 @@
-import React,{useState} from 'react'
-import { useHistory } from 'react-router-dom';
+import React,{useState,useContext, useEffect} from 'react'
+import { Link,useHistory } from 'react-router-dom';
 import "./Login.css"
+import { LabLoginContext } from './App';
+
 const LabLogin = () => {
+    const [isLabLogin, setIsLabLogin] =  useContext(LabLoginContext);
     const history=useHistory();
+    useEffect(()=>{
+        setIsLabLogin(false);
+    },[])
     const [user,setUser] = useState({
         uname:"",city:"",password:""
     });
@@ -39,10 +45,12 @@ const LabLogin = () => {
             console.log(data);
             if(data.message==="successful login")
             {
+                setIsLabLogin(true);
+                //window.localStorage.setItem('login',JSON.stringify({user:isLogin,lab:isLabLogin}));
                history.push(
                 {
                     pathname: '/LabHome',
-                     state:{city}
+                     state:{uname,city}
                 });
             }
             
@@ -67,7 +75,9 @@ const LabLogin = () => {
                 </select>
                 <input type="password" name="password" placeholder="*******" value={user.password} onChange={handleInputs}/>
                 <input type="submit" value="Login"  onClick={PostData}/>
+                <Link to ="/LabSignUp"><button>Lab SignUp</button></Link>
             </form>
+            
         </div>
     )
 }

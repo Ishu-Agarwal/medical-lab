@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useHistory } from 'react-router-dom';
+import {Link, useHistory } from 'react-router-dom';
 import "./Login.css"
 const SignUp = () => {
     const history=useHistory();
@@ -51,6 +51,7 @@ const SignUp = () => {
                 <input type="text" placeholder="abc@gmail.com"      name="email"  value={user.email} onChange={handleInputs}/>
                 <input type="number" placeholder="Phone Number"     name="number"  value={user.number} onChange={handleInputs}/>
                 <input type="submit" placeholder="Submit" onClick={PostData}/>
+                <Link to ="/Login"><button>User Login</button></Link>
             </form>
         </div>
     )

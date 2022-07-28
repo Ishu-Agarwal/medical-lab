@@ -3,23 +3,20 @@ import { Link,useLocation ,useHistory } from "react-router-dom";
 import {useContext} from 'react';
 import { LabLoginContext , LoginContext} from './App';
 import'./book.css';
-const History = (props) => {
+const LabHistory = (props) => {
      const history=useHistory();
      const location = useLocation();
-     const [isLogin, setIsLogin] =  useContext(LoginContext);
+     const [isLabLogin, setIsLabLogin] =  useContext(LabLoginContext);
      useEffect(() => {
-       if(!isLogin) history.push({pathname: "/Main"});
+       if(!isLabLogin) history.push({pathname: "/Main"});
      }, []);
-
-     const uname=location.state.uname;
-
      useEffect(() => {
         console.log(location.pathname);
         console.log(location.state.uname);
      }, [location]);
 
     const [user,setUser] = useState({
-        uname: location.state.uname ,fname:"",lname:"",phone:"",sdoa:"",ldoa:""
+        labname: location.state.uname , city:location.state.city , sdoa:"",ldoa:""
     });
     let name,value;
     const handleInputs=(event)=>{
@@ -30,15 +27,15 @@ const History = (props) => {
     }
     const PostData=async (event)=>{
         event.preventDefault();
-        const {uname,fname,lname,phone,sdoa,ldoa} =user;
-        const res = await fetch("/history",{
+        const {labname,city,sdoa,ldoa} =user;
+        const res = await fetch("/labhistory",{
             method : "POST",
             headers :{
                 "content-Type": "application/json"
             },
             body : JSON.stringify(
                 {
-                    uname,fname,lname,phone,sdoa,ldoa
+                    labname,city,sdoa,ldoa
                 }
             )
         });
@@ -58,17 +55,12 @@ const History = (props) => {
     }
     return (
         <div class="caard">
-             <form method="POST" className='container1'>
+             <form method="POST" >
             <h3 style={{'color':'black'}}>Fill the Detail to Search:</h3><br></br>
-            <label for="uname">Account User:</label>
-                <input type="text"  name="uname"  value={user.uname} disabled="true"/>
-            <label for="fname">First Name:</label>
-            <input type="text" placeholder="first name"     name="fname"  value={user.fname} onChange={handleInputs}/>
-            <label for="lname">Last Name:</label>
-            <input type="text" placeholder="last name"      name="lname"  value={user.lname} onChange={handleInputs}/>
-            <label for="phone">Phone Number:</label><br></br>
-            <input type="number" placeholder="XXXXXXXXXX"      name="phone"  value={user.phone} onChange={handleInputs}/>
-            
+            <label for="uname">Lab Name:</label>
+                <input type="text"  name="uname"  value={user.labname} disabled="true"/>
+                <label for="city">City:</label>
+                <input type="text" name="city"  value={user.city} disabled="true"/>
             <label for="sdate">Start_date:</label><br></br>
                 <input type="date" placeholder="Start date"name="sdoa"  value={user.sdoa} onChange={handleInputs}/>
                 <br></br>
@@ -79,4 +71,4 @@ const History = (props) => {
         </div>
     );
 }
-export default History;
+export default LabHistory;

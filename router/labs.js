@@ -103,6 +103,24 @@ router.post('/CenterLab',async(req,res) =>{
         console.log(err);
     }
 });
+
+router.post('/labhistory',async(req,res) =>{
+    try{
+        const fond=req.body;
+        console.log(fond);
+        const userdata=await Book.find({city:fond.city,labname:fond.labname,doa:{$gt:fond.sdoa,$lt:fond.ldoa}});
+        if(!userdata){
+            res.status(400).json({message:"no such data present"});
+        }
+        console.log(userdata);
+        res.status(200).send(userdata);
+        }
+        catch(err){
+            res.status(400).json({message:"no such data present"});
+            console.log(err);
+        }
+});
+
 module.exports = router;
 
 
