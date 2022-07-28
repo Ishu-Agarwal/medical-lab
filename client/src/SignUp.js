@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {Link, useHistory } from 'react-router-dom';
-import "./Login.css"
+import "./Signup.css"
 const SignUp = () => {
     const history=useHistory();
     const [user,setUser] = useState({
